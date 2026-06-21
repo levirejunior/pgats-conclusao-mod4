@@ -15,88 +15,32 @@ on:
     branches:
       - master
 #tarefas dentro da pipeline = jobs
-
 jobs:
-  #nome do job
-  inspecao:
-    # maquina onde o job vai rodar
-    runs-on: ubuntu-latest
+    #nome do job
+    unit-tests:
+        #máquina onde vai rodar o job
+        runs-on: ubuntu-Latest
+        steps:
+            # clone do projeto
+            - uses: actions/checkout@v4
 
-    # passos do job
-    steps:
-      # clone do projeto
-      - uses: actions/checkout@v4
+            # instalação do node
+            - uses: actions/setup-node@v4
+              with:
+                node-version: 24.x
 
-      # instalção do node
-      - uses: actions/setup-node@v4
-        with:
-          node-version: latest
+            # instalação das dependencias
+            - name: Instalando Dependências
+              run: npm install
 
-      # instalação do Yarn
-      - name: Instalando Yarn
-        run: npm install -g yarn
+            # executar os testes unitários
+            - name: Executando testes Unitários
+              run: npm run test-report
 
-      # instalação das dependências
-      - name: Instalando dependências
-        run: yarn
-
-      - name: Inspeção de Código
-        run: yarn lint
-
-  unidade:
-    runs-on: ubuntu-latest
-    needs: [inspecao]
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: latest
-
-      - name: Instalando Yarn
-        run: npm install -g yarn
-
-      - name: Instalando dependências
-        run: yarn
-
-      - name: Rodando testes unitários
-        run: yarn run test
-
-  e2e-tests:
-    runs-on: ubuntu-latest
-    needs: [inspecao]
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: latest
-
-      - name: Instalando Yarn
-        run: npm install -g yarn
-
-      - name: Instalando dependências
-        run: yarn
-
-      - name: Instalando Browsers do Playwright
-        run: yarn playwright install
-
-      - name: Executando testes E2E
-        run: yarn run e2e
-
-      - name: Salvando relatórios de testes
-        uses: actions/upload-artifact@v4
-        if: ${{ always() }}
-        with:
-          path: ./playwright-report
-          name: Relatório de Testes E2E
-
-  deploy:
-    runs-on: ubuntu-latest
-    needs: [unidade, e2e-tests]
-
-    steps:
-      - name: Simulação de Deploy
-        run: echo 'Deploy sendo realizado...'
+            # publica relatório de testes
+            - name: Salvando relatórios de testes
+              uses: actions/upload-artifact@v4
+              if: ${{ always() }}
+              with:
+                path: ./mochawesome-report
+                name: Relatório de Testes Unitários

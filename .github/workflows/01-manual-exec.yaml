@@ -22,13 +22,16 @@ jobs:
             - uses: actions/setup-node@v4
               with:
                 node-version: 24.x
-            # instalacao das dependencias
+
+            # instalação das dependencias
             - name: Instalando Dependências
               run: npm install
+
             # executar os testes unitários
             - name: Executando testes Unitários
               run: npm run test-report
-            # Publica relatorios de testes
+
+            # publica relatório de testes
             - name: Salvando relatórios de testes
               uses: actions/upload-artifact@v4
               if: ${{ always() }}
