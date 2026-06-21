@@ -1,0 +1,37 @@
+# CI de Nível 01, disparo manual através de clique
+
+#nome da pipeline
+name: 'Execução Manual'
+
+# Gatilhos / Triggers - regras de disparo
+# Gatilho manual = workFlow dispath
+
+on:
+    workflow_dispatch:
+# tarefas dentro da pipeline - jobs
+jobs:
+    #nome do job
+    unit-tests:
+        #máquina onde vai rodar o job
+        runs-on: ubuntu-Latest
+        steps:
+            # clone do projeto
+            - uses: actions/checkout@v4
+
+            # instalação do node
+            - uses: actions/setup-node@v4
+              with:
+                node-version: 24.x
+            # instalacao das dependencias
+            - name: Instalando Dependências
+              run: npm install
+            # executar os testes unitários
+            - name: Executando testes Unitários
+              run: npm test-report
+            # Publica relatorios de testes
+            - name: Salvando relatórios de testes
+              uses: actions/upload-artifact@v4
+              if: ${{ always() }}
+              with:
+                path: ./mochawesome-report
+                name: Relatório de Testes Unitários

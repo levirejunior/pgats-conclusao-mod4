@@ -1,27 +1,23 @@
-[![Code coverage badge](https://img.shields.io/badge/coverage-100%25-brightgreen)](https://stryker-mutator.io/robo-coasters-example/reports/coverage/lcov-report/index.html)
-[![Mutation testing badge](https://img.shields.io/endpoint?style=flat&url=https%3A%2F%2Fbadge-api.stryker-mutator.io%2Fgithub.com%2Fstryker-mutator%2Frobo-coasters-example%2Fmaster)](https://dashboard.stryker-mutator.io/reports/github.com/stryker-mutator/robo-coasters-example/master)
+# PGATS - CI - MOD04
 
-# PGATS - CI
+Projeto de automação de testes, contento testes unitários com geração de relatório e integração com GitHubActions
 
 ## Pré-requisitos
 
 1. Instale o [git](https://git-scm.com)
 2. Instale o [nodejs](https://nodejs.org/)
-3. Instale o Yarn - `npm install -g yarn`
-4. Faça um _Fork_ do projeto
-5. Clone o repositório para sua máquina (seu fork)
-6. Instale as dependências
+3. Instale o mocha - `npm mocha install`
+4. Clone o repositório para sua máquina
+5. Instale as dependências
    ```shell
-   cd pgats-ci
-   yarn
+   cd pgats-ci-conclusao-mod04
+   npm install
    ```
-7. Execute os testes de unidade - isso vai gerar um relatório
+6. Execute os testes de unidade - isso vai gerar um relatório
    ```shell
-   yarn run test
+   npm test
    ```
-8. Abra o relatório de cobertura de código em `reports/coverage/lcov-report`
-9.  Acesse a aplicação publicada [neste link](https://pgats-ci-example.netlify.app)
+7. Abra o relatório de cobertura de código em `mochawesome-report`
 
 ---
-# pgats-ci
-# pgats-conclusao-mod4
+# pgats-ci-conclusao-mod4
