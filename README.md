@@ -1,6 +1,6 @@
 # PGATS - CI - MOD04
 
-Projeto de automação de testes, contendo testes unitários com geração de relatório e integração com GitHubActions
+Projeto de automação de testes, contendo testes unitários com geração de relatório com Mochawesome e integração com Pipeline do GitHubActions
 
 ## Pré-requisitos
 
