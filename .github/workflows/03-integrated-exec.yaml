@@ -9,8 +9,6 @@ name: 'Execução Integrada'
 # gatilho por conclusão de outra pipeline = workflow_run
 
 on:
-  workflow_dispatch:
-
   push:
     branches:
       - master
