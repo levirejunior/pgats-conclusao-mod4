@@ -27,7 +27,7 @@ jobs:
               run: npm install
             # executar os testes unitários
             - name: Executando testes Unitários
-              run: npm test-report
+              run: npm run test-report
             # Publica relatorios de testes
             - name: Salvando relatórios de testes
               uses: actions/upload-artifact@v4
