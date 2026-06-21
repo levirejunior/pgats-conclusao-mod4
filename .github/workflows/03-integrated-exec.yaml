@@ -12,6 +12,9 @@ on:
   push:
     branches:
       - master
+
+  workflow_dispatch:
+    
 #tarefas dentro da pipeline = jobs
 jobs:
     #nome do job

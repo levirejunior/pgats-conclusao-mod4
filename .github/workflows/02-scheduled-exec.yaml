@@ -13,8 +13,10 @@ on:
     # 1 - minuto, 2 - hora, 3 dia do mês, 4 - mês, 5 - dia da semana
     
     #Roda toda sexta-feira à meia noite
-    - cron: '50 17 * * 0'
+    - cron: '0 18 * * 0'
       timezone: 'America/Sao_Paulo'
+  
+  workflow_dispatch:
 
 #tarefas dentro da pipeline = jobs
 jobs:
